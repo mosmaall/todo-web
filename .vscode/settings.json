@@ -1,0 +1,9 @@
+{
+  "javascript.validate.enable": false,
+  "files.defaultLanguage": "javascriptreact",
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "eslint.enable": true,
+  "editor.formatOnSave": true
+}
