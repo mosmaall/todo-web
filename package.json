@@ -21,7 +21,7 @@
     "test:cypress:travis": "npm run build && npm run cy:start-server-and-test:travis",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:run:travis": "npm run cy:run -- --record --config video=true",
+    "cy:run:travis": "npm run cy:run -- --record --key d21902d6-f58c-4409-91ab-33ec33552771",
     "test:cypress:dev": "npm-run-all --parallel --race start 'cy:open -- --config baseUrl=http://localhost:3000'",
     "cy:start-server-and-test": "npx start-server-and-test serve :5000 cy:run",
     "cy:start-server-and-test:travis": "npx start-server-and-test serve :5000 cy:run:travis",
