@@ -2,7 +2,7 @@
   "name": "todo-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mosmaall.github.io/todo-web",
+  "homepage": ".",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -11,12 +11,21 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "cypress": "cypress open",
-    "cypress:all": "cypress run"
+    "test": "npm-run-all --parallel --silent test:unit test:cypress",
+    "test:travis": "npm-run-all --parallel --silent test:unit test:cypress:travis",
+    "test:unit": "cross-env CI=true npm run test:unit:watch",
+    "test:unit:watch": "react-scripts test --env=jsdom",
+    "test:cypress": "npm run build && npm run cy:start-server-and-test",
+    "test:cypress:travis": "npm run build && npm run cy:start-server-and-test:travis",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:travis": "npm run cy:run -- --record --config video=true",
+    "test:cypress:dev": "npm-run-all --parallel --race start 'cy:open -- --config baseUrl=http://localhost:3000'",
+    "cy:start-server-and-test": "npx start-server-and-test serve :5000 cy:run",
+    "cy:start-server-and-test:travis": "npx start-server-and-test serve :5000 cy:run:travis",
+    "serve": "npx serve --no-clipboard --single --listen 5000 build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "cypress": "^3.3.2",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
@@ -44,6 +54,9 @@
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "gh-pages": "^2.0.1",
-    "prettier": "^1.18.2"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "serve": "^11.0.2",
+    "start-server-and-test": "^1.9.1"
   }
 }
