@@ -1,7 +1,7 @@
 import React from 'react'
 
-function App() {
+function TodoApp() {
   return <div>Hello Not deploy</div>
 }
 
-export default App
+export default TodoApp
