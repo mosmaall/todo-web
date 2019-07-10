@@ -12,6 +12,7 @@ const TodoForm = props => {
   const onSubmit = e => {
     e.preventDefault()
     handleAddTask(value)
+    setValue('')
   }
 
   return (
