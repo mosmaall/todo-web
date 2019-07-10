@@ -13,7 +13,6 @@ describe('TodoForm', () => {
   it('can change input value', () => {
     const { getByPlaceholderText } = render(<TodoForm />)
     const input = getByPlaceholderText('Add task')
-    console.log('input')
     fireEvent.change(input, {
       target: {
         value: 'NEW TASK',
