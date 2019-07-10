@@ -23,4 +23,9 @@ describe('TodoList', () => {
     getByText(todos[0].title)
     getByText(todos[1].title)
   })
+
+  it('should render "Empty" text', () => {
+    const { getByText } = render(<TodoList todos={[]} />)
+    getByText('Empty')
+  })
 })
