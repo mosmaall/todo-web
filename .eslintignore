@@ -2,4 +2,5 @@ node_modules
 config-overrides.js
 cypress/*
 *.spec.js
+*.test.js
 *.css

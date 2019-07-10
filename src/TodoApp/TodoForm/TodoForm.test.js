@@ -23,20 +23,19 @@ describe('TodoForm', () => {
   })
   it('calls "handleAddTask" with value when press enter ', () => {
     const handleAddTask = jest.fn()
-    const { getByPlaceholderText } = render(
+    const { getByPlaceholderText, getByTestId } = render(
       <TodoForm handleAddTask={handleAddTask} />
     )
 
     const input = getByPlaceholderText('Add task')
+    const form = getByTestId('todo-form')
+
     fireEvent.change(input, {
       target: {
         value: 'NEW TASK',
       },
     })
-    fireEvent.keyDown(input, {
-      key: 'Enter',
-      code: 13,
-    })
-    expect(handleAddTask).toBeCalledWith('NEW TASK')
+    fireEvent.submit(form)
+    expect(handleAddTask).toHaveBeenCalledWith('NEW TASK')
   })
 })
