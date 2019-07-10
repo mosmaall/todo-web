@@ -7,8 +7,8 @@ afterEach(cleanup)
 
 describe('TodoForm', () => {
   it('has input', () => {
-    const { getByPlaceholderText } = render(<TodoForm />)
-    getByPlaceholderText('Add task')
+    const { getByTestId } = render(<TodoForm />)
+    expect(getByTestId('todo-input')).toBeInTheDocument()
   })
   it('can change input value', () => {
     const { getByPlaceholderText } = render(<TodoForm />)
