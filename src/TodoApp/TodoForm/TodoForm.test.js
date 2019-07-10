@@ -11,8 +11,8 @@ describe('TodoForm', () => {
     expect(getByTestId('todo-input')).toBeInTheDocument()
   })
   it('can change input value', () => {
-    const { getByPlaceholderText } = render(<TodoForm />)
-    const input = getByPlaceholderText('Add task')
+    const { getByTestId } = render(<TodoForm />)
+    const input = getByTestId('todo-input')
     fireEvent.change(input, {
       target: {
         value: 'NEW TASK',
