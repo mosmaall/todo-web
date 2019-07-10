@@ -12,4 +12,19 @@ describe('TodoApp', () => {
     getByTestId('todo-list')
     getByTestId('todo-form')
   })
+  it('create new todo', () => {
+    const { getByPlaceholderText, getByTestId, getByText } = render(<TodoApp />)
+
+    const input = getByPlaceholderText('Add task')
+    const form = getByTestId('todo-form')
+
+    fireEvent.change(input, {
+      target: {
+        value: 'NEW TASK',
+      },
+    })
+    fireEvent.submit(form)
+
+    getByText('NEW TASK')
+  })
 })
