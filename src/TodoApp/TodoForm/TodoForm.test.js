@@ -21,13 +21,11 @@ describe('TodoForm', () => {
 
     expect(input).toHaveAttribute('value', 'NEW TASK')
   })
-  it('calls "handleAddTask" with value when press enter ', () => {
+  it('calls "handleAddTask" with value and reset when submit form', () => {
     const handleAddTask = jest.fn()
-    const { getByPlaceholderText, getByTestId } = render(
-      <TodoForm handleAddTask={handleAddTask} />
-    )
+    const { getByTestId } = render(<TodoForm handleAddTask={handleAddTask} />)
 
-    const input = getByPlaceholderText('Add task')
+    const input = getByTestId('todo-input')
     const form = getByTestId('todo-form')
 
     fireEvent.change(input, {
@@ -37,23 +35,6 @@ describe('TodoForm', () => {
     })
     fireEvent.submit(form)
     expect(handleAddTask).toHaveBeenCalledWith('NEW TASK')
-  })
-  it('reset value when submit form', () => {
-    const handleAddTask = jest.fn()
-    const { getByPlaceholderText, getByTestId } = render(
-      <TodoForm handleAddTask={handleAddTask} />
-    )
-
-    const input = getByPlaceholderText('Add task')
-    const form = getByTestId('todo-form')
-
-    fireEvent.change(input, {
-      target: {
-        value: 'NEW TASK',
-      },
-    })
-    fireEvent.submit(form)
-
     expect(input).toHaveAttribute('value', '')
   })
 })
