@@ -19,9 +19,12 @@ describe('TodoList', () => {
   ]
 
   it('should render list of todo', () => {
-    const { getByText } = render(<TodoList todos={todos} />)
-    getByText(todos[0].title)
-    getByText(todos[1].title)
+    const { getAllByTestId } = render(<TodoList todos={todos} />)
+
+    const todoTitles = getAllByTestId('todo-item').map(li => li.textContent)
+    const fakeTodoTitles = todos.map(t => t.title)
+
+    expect(todoTitles).toEqual(fakeTodoTitles)
   })
 
   it('should render "Empty" text', () => {
