@@ -1,9 +1,15 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render, cleanup, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+
 import TodoApp from '.'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<TodoApp />, div)
-  ReactDOM.unmountComponentAtNode(div)
+afterEach(cleanup)
+
+describe('TodoApp', () => {
+  it('render TodoForm and TodoList', () => {
+    const { getByTestId } = render(<TodoApp />)
+    getByTestId('todo-list')
+    getByTestId('todo-form')
+  })
 })

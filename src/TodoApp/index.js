@@ -1,13 +1,12 @@
 import React from 'react'
 import TodoForm from './TodoForm'
+import TodoList from './TodoList'
 
 function TodoApp() {
-  const handleAddTask = () => {
-    console.log('yo')
-  }
   return (
     <div>
-      <TodoForm handleAddTask={handleAddTask} />
+      <TodoForm />
+      <TodoList />
     </div>
   )
 }

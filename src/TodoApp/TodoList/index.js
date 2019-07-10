@@ -6,7 +6,11 @@ const TodoList = props => {
 
   const itemList = todos.map(todo => <li key={todo.id}>{todo.title}</li>)
 
-  return todos.length > 0 ? <ul>{itemList}</ul> : <>Empty</>
+  return (
+    <div data-testid="todo-list">
+      {todos.length > 0 ? <ul>{itemList}</ul> : <>Empty</>}
+    </div>
+  )
 }
 
 TodoList.propTypes = {
