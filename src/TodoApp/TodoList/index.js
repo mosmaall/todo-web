@@ -4,7 +4,11 @@ import PropTypes from 'prop-types'
 const TodoList = props => {
   const { todos } = props
 
-  const itemList = todos.map(todo => <li key={todo.id}>{todo.title}</li>)
+  const itemList = todos.map(todo => (
+    <li key={todo.id} data-testid="todo-item">
+      {todo.title}
+    </li>
+  ))
 
   return (
     <div data-testid="todo-list">

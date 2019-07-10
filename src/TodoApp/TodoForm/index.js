@@ -17,7 +17,12 @@ const TodoForm = props => {
 
   return (
     <form onSubmit={onSubmit} data-testid="todo-form">
-      <input placeholder="Add task" value={value} onChange={onChange} />
+      <input
+        data-testid="todo-input"
+        placeholder="Add task"
+        value={value}
+        onChange={onChange}
+      />
       <button type="submit">Add task</button>
     </form>
   )

@@ -8,9 +8,9 @@ describe('todo app', () => {
   })
 
   it('As a user i can add todo ', () => {
-    cy.get('[data-cy=todo-input]')
+    cy.get('[data-testid=todo-input]')
       .type('Have a lunch{enter}')
-      .type('Have a dinner{endter')
-    cy.get('[data-cy=todo-item]').should('have.length', 2)
+      .type('Have a dinner{enter}')
+    cy.get('[data-testid=todo-item]').should('have.length', 2)
   })
 })
