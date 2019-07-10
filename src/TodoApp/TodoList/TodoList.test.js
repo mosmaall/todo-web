@@ -27,8 +27,8 @@ describe('TodoList', () => {
     expect(todoTitles).toEqual(fakeTodoTitles)
   })
 
-  it('should render "Empty" text', () => {
-    const { getByText } = render(<TodoList todos={[]} />)
-    getByText('Empty')
+  it('should render "Empty" text when no todos', () => {
+    const { getByText } = render(<TodoList />)
+    expect(getByText(/Empty/i)).toBeInTheDocument()
   })
 })
