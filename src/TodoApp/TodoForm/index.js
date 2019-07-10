@@ -23,7 +23,6 @@ const TodoForm = props => {
         value={value}
         onChange={onChange}
       />
-      <button type="submit">Add task</button>
     </form>
   )
 }
