@@ -54,6 +54,12 @@ function TodoApp(props) {
     setCurrentMenu(value)
   }
 
+  const handleChangeTitle = (value, id) => {
+    setTodos(prevTodos =>
+      prevTodos.map(todo => (todo.id === id ? { ...todo, title: value } : todo))
+    )
+  }
+
   const filterTodos = getFilteredTodo(todos, currentMenu)
   const percent = getProgressPercentage(todos)
 
@@ -66,6 +72,7 @@ function TodoApp(props) {
         todos={filterTodos}
         handleRemoveTodo={handleRemoveTodo}
         handleToggleTodo={handleToggleTodo}
+        handleChangeTitle={handleChangeTitle}
       />
     </div>
   )

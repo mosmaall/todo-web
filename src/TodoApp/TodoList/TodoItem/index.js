@@ -3,7 +3,14 @@ import PropTypes from 'prop-types'
 
 const TodoItem = props => {
   const [showInput, setShowInput] = useState(false)
-  const { title, id, isFinished, handleRemoveTodo, handleToggleTodo } = props
+  const {
+    title,
+    id,
+    isFinished,
+    handleRemoveTodo,
+    handleToggleTodo,
+    handleChangeTitle,
+  } = props
 
   const statusText = isFinished ? 'Done' : 'In Progress'
 
@@ -14,6 +21,7 @@ const TodoItem = props => {
           value={title}
           data-testid="edit-input"
           onBlur={() => setShowInput(false)}
+          onChange={e => handleChangeTitle(e.target.value, id)}
           autoFocus
         />
       ) : (
@@ -39,6 +47,7 @@ TodoItem.propTypes = {
   isFinished: PropTypes.bool,
   handleRemoveTodo: PropTypes.func,
   handleToggleTodo: PropTypes.func,
+  handleChangeTitle: PropTypes.func,
 }
 
 export default TodoItem

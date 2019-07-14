@@ -69,6 +69,24 @@ describe('TodoApp', () => {
 
     expect(getByTestId('progress-bar')).toHaveStyle('width: 50%')
   })
+  it('can change todo title', () => {
+    const { getByTestId, getByText } = render(
+      <TodoApp
+        defaultTodos={[{ id: 'todo-1', title: 'TODO-1', isFinished: false }]}
+      />
+    )
+
+    fireEvent.click(getByText('TODO-1'))
+    const editInput = getByTestId('edit-input')
+    fireEvent.change(editInput, {
+      target: {
+        value: 'CHANGE-TITLE',
+      },
+    })
+    fireEvent.blur(editInput)
+
+    expect(getByTestId('todo-item')).toHaveTextContent('CHANGE-TITLE')
+  })
 })
 
 describe('getProgressPercentage', () => {
