@@ -22,11 +22,18 @@ describe('TodoItem', () => {
     expect(getByTestId('checked-btn')).toBeInTheDocument()
   })
 
-  it('should render status text', () => {
+  it('should render "In Progress" text if todo is not finished', () => {
     const { getByTestId } = render(
       <TodoItem title={todo.title} isFinished={false} />
     )
     expect(getByTestId('todo-item')).toHaveTextContent('In Progress')
+  })
+
+  it('should render "Done" text if todo is finished', () => {
+    const { getByTestId } = render(
+      <TodoItem title={todo.title} isFinished={true} />
+    )
+    expect(getByTestId('todo-item')).toHaveTextContent('Done')
   })
 
   it('call "handleDelete" with id when click remove button', () => {
