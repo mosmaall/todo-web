@@ -2,7 +2,7 @@ import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
-import TodoApp from '.'
+import TodoApp, { getProgressPercentage } from '.'
 
 afterEach(cleanup)
 
@@ -67,8 +67,17 @@ describe('TodoApp', () => {
 })
 
 describe('getProgressPercentage', () => {
+  const todo50 = [
+    { id: 'todo-1', title: 'TODO-1', isFinished: false },
+    { id: 'todo-2', title: 'TODO-2', isFinished: true },
+  ]
+
   it('should equal 50', () => {
-    const percent = getProgressPercentage(todos)
+    const percent = getProgressPercentage(todo50)
     expect(percent).toBe(50)
+  })
+  it('should equal 0', () => {
+    const percent = getProgressPercentage()
+    expect(percent).toBe(0)
   })
 })

@@ -15,7 +15,7 @@ function getFilteredTodo(todos, currentMenu) {
   return todos
 }
 
-export function getProgressPercentage(todos) {
+export function getProgressPercentage(todos = []) {
   if (todos.length < 1) return 0
 
   const finishedAmount = todos.reduce((sum, todo) => todo.isFinished ? (sum = sum += 1) : sum, 0) // prettier-ignore
