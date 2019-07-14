@@ -19,7 +19,9 @@ const StatusTabs = props => {
       >
         In Progress
       </StyledButton>
-      <StyledButton data-testid="done-menu">Done</StyledButton>
+      <StyledButton data-testid="done-menu" active={active === 'done'}>
+        Done
+      </StyledButton>
     </div>
   )
 }

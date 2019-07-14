@@ -22,4 +22,8 @@ describe('StatusTabs', () => {
       'text-decoration: underline'
     )
   })
+  it('show active on Done menu', () => {
+    const { getByTestId } = render(<StatusTabs active="done" />)
+    expect(getByTestId('done-menu')).toHaveStyle('text-decoration: underline')
+  })
 })
