@@ -68,7 +68,7 @@ describe('TodoItem', () => {
     expect(handleToggleTodo).toHaveBeenCalledWith(todo.id, true || false)
   })
 
-  it('change from text to input when click on title', () => {
+  it('change from text to input when clicked on title', () => {
     const { getByText, getByTestId } = render(
       <TodoItem title={todo.title} id={todo.id} />
     )
