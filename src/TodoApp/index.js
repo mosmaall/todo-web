@@ -15,6 +15,14 @@ function getFilteredTodo(todos, currentMenu) {
   return todos
 }
 
+export function getProgressPercentage(todos) {
+  if (todos.length < 1) return 0
+
+  const finishedAmount = todos.reduce((sum, todo) => todo.isFinished ? (sum = sum += 1) : sum, 0) // prettier-ignore
+
+  return (finishedAmount / todos.length) * 100
+}
+
 function TodoApp(props) {
   const { defaultTodos } = props
   const [todos, setTodos] = useState(defaultTodos)
@@ -46,6 +54,7 @@ function TodoApp(props) {
   }
 
   const filterTodos = getFilteredTodo(todos, currentMenu)
+  const percent = getProgressPercentage(todos)
 
   return (
     <div>

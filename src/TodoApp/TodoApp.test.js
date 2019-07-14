@@ -65,3 +65,10 @@ describe('TodoApp', () => {
     expect(getByTestId('todo-item')).toHaveTextContent('TODO-1')
   })
 })
+
+describe('getProgressPercentage', () => {
+  it('should equal 50', () => {
+    const percent = getProgressPercentage(todos)
+    expect(percent).toBe(50)
+  })
+})
