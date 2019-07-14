@@ -7,6 +7,11 @@ import TodoApp from '.'
 afterEach(cleanup)
 
 describe('TodoApp', () => {
+  const todos = [
+    { id: 'todo-1', title: 'TODO-1', isFinished: false },
+    { id: 'todo-2', title: 'TODO-2', isFinished: true },
+  ]
+
   it('render TodoForm and TodoList', () => {
     const { getByTestId } = render(<TodoApp />)
     getByTestId('todo-list')
@@ -46,8 +51,17 @@ describe('TodoApp', () => {
 
     const checkedButton = getByTestId('checked-btn')
     fireEvent.click(checkedButton)
-    expect(getByText('Done')).toBeInTheDocument()
+    expect(getByTestId('todo-item')).toHaveTextContent('Done')
     fireEvent.click(checkedButton)
-    expect(getByText('In Progress')).toBeInTheDocument()
+    expect(getByTestId('todo-item')).toHaveTextContent('In Progress')
+  })
+  it('show only in progress todo when clicked In Progress menu', () => {
+    const { getByTestId, getAllByTestId } = render(
+      <TodoApp defaultTodos={todos} />
+    )
+    const inProgressMenu = getByTestId('inProgress-menu')
+
+    fireEvent.click(inProgressMenu)
+    expect(getByTestId('todo-item')).toHaveTextContent('TODO-1')
   })
 })

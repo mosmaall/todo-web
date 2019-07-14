@@ -2,10 +2,23 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
+import StatusTabs from './Navbar/StatusTabs'
+
+function getFilteredTodo(todos, currentMenu) {
+  if (currentMenu === 'done') {
+    return todos.filter(todo => todo.isFinished === true)
+  }
+  if (currentMenu === 'inProgress') {
+    return todos.filter(todo => todo.isFinished === false)
+  }
+
+  return todos
+}
 
 function TodoApp(props) {
   const { defaultTodos } = props
   const [todos, setTodos] = useState(defaultTodos)
+  const [currentMenu, setCurrentMenu] = useState('all')
 
   const handleAddTask = value => {
     setTodos(prevTodos =>
@@ -28,11 +41,18 @@ function TodoApp(props) {
     )
   }
 
+  const handleClickMenu = value => {
+    setCurrentMenu(value)
+  }
+
+  const filterTodos = getFilteredTodo(todos, currentMenu)
+
   return (
     <div>
+      <StatusTabs active={currentMenu} handleClickMenu={handleClickMenu} />
       <TodoForm handleAddTask={handleAddTask} />
       <TodoList
-        todos={todos}
+        todos={filterTodos}
         handleRemoveTodo={handleRemoveTodo}
         handleToggleTodo={handleToggleTodo}
       />

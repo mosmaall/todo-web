@@ -31,4 +31,16 @@ describe('todo app', () => {
     cy.get('[data-testid=checked-btn]').uncheck()
     cy.get('[data-testid=todo-item').contains('In Progress')
   })
+
+  it('As a user i can view only finished todo', () => {
+    cy.get('[data-testid=todo-input]').type('Have a lunch{enter}')
+    cy.get('[data-testid=todo-input]').type('Have a dinner{enter}')
+    cy.get('[data-testid=checked-btn]')
+      .first()
+      .check()
+    cy.get('data-testid=done-todo').click()
+    cy.get('[data-testid=todo-item]')
+      .should('have.length', 1)
+      .and('have.string', 'Have a lunch')
+  })
 })
