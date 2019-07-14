@@ -22,6 +22,13 @@ describe('TodoItem', () => {
     expect(getByTestId('checked-btn')).toBeInTheDocument()
   })
 
+  it('should render status text', () => {
+    const { getByTestId } = render(
+      <TodoItem title={todo.title} isFinished={false} />
+    )
+    expect(getByTestId('todo-item')).toHaveTextContent('In Progress')
+  })
+
   it('call "handleDelete" with id when click remove button', () => {
     const handleRemoveTodo = jest.fn()
     const { getByTestId } = render(

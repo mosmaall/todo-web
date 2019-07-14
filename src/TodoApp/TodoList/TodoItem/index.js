@@ -2,11 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TodoItem = props => {
-  const { title, id, handleRemoveTodo, handleToggleTodo } = props
+  const { title, id, isFinished, handleRemoveTodo, handleToggleTodo } = props
+
+  const statusText = isFinished ? 'Done' : 'In Progress'
 
   return (
     <li data-testid="todo-item">
       <span>{title}</span>
+      <p>{statusText}</p>
       <input
         type="checkbox"
         data-testid="checked-btn"
