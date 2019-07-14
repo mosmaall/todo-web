@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const TodoItem = props => {
+  const [showInput, setShowInput] = useState(false)
   const { title, id, isFinished, handleRemoveTodo, handleToggleTodo } = props
 
   const statusText = isFinished ? 'Done' : 'In Progress'
 
   return (
     <li data-testid="todo-item">
-      <span>{title}</span>
+      {showInput ? (
+        <input data-testid="edit-input" />
+      ) : (
+        <span onClick={() => setShowInput(true)}>{title}</span>
+      )}
+
       <p>{statusText}</p>
       <input
         type="checkbox"

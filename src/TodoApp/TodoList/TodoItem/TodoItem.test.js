@@ -67,4 +67,14 @@ describe('TodoItem', () => {
 
     expect(handleToggleTodo).toHaveBeenCalledWith(todo.id, true || false)
   })
+
+  it('change from text to input when click on title', () => {
+    const { getByText, getByTestId } = render(
+      <TodoItem title={todo.title} id={todo.id} />
+    )
+
+    fireEvent.click(getByText(todo.title))
+
+    expect(getByTestId('edit-input')).toBeInTheDocument()
+  })
 })
