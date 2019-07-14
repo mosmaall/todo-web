@@ -10,7 +10,11 @@ const TodoItem = props => {
   return (
     <li data-testid="todo-item">
       {showInput ? (
-        <input data-testid="edit-input" />
+        <input
+          data-testid="edit-input"
+          onBlur={() => setShowInput(false)}
+          autoFocus
+        />
       ) : (
         <span onClick={() => setShowInput(true)}>{title}</span>
       )}
