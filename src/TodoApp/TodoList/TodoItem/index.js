@@ -6,6 +6,7 @@ const TodoItem = props => {
   return (
     <li data-testid="todo-item">
       <span>{title}</span>
+      <input type="checkbox" data-testid="checked-btn" />
       <button data-testid="remove-btn" onClick={() => handleRemoveTodo(id)}>
         Remove
       </button>

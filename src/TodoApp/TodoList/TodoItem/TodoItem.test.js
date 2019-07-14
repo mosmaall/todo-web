@@ -16,6 +16,12 @@ describe('TodoItem', () => {
     const { getByTestId } = render(<TodoItem title={todo.title} />)
     expect(getByTestId('todo-item')).toHaveTextContent('Have a lunch')
   })
+
+  it('should render a checkbox', () => {
+    const { getByTestId } = render(<TodoItem title={todo.title} />)
+    expect(getByTestId('checked-btn')).toBeInTheDocument()
+  })
+
   it('call "handleDelete" with id when click remove button', () => {
     const handleRemoveTodo = jest.fn()
     const { getByTestId } = render(
