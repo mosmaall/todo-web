@@ -36,6 +36,14 @@ describe('TodoItem', () => {
     expect(getByTestId('todo-item')).toHaveTextContent('Done')
   })
 
+  it('should has checked value on checkbox if todo is finished', () => {
+    const { getByTestId } = render(
+      <TodoItem title={todo.title} isFinished={true} />
+    )
+
+    expect(getByTestId('checked-btn')).toHaveProperty('checked', true)
+  })
+
   it('call "handleDelete" with id when click remove button', () => {
     const handleRemoveTodo = jest.fn()
     const { getByTestId } = render(

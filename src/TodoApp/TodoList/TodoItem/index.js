@@ -31,6 +31,7 @@ const TodoItem = props => {
 
       <p>{statusText}</p>
       <input
+        checked={isFinished}
         type="checkbox"
         data-testid="checked-btn"
         onChange={e => handleToggleTodo(id, e.target.checked)}
