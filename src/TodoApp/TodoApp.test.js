@@ -72,12 +72,24 @@ describe('getProgressPercentage', () => {
     { id: 'todo-2', title: 'TODO-2', isFinished: true },
   ]
 
+  const todo75 = [
+    { id: 'todo-1', title: 'TODO-1', isFinished: false },
+    { id: 'todo-2', title: 'TODO-2', isFinished: true },
+    { id: 'todo-3', title: 'TODO-3', isFinished: true },
+    { id: 'todo-4', title: 'TODO-4', isFinished: true },
+  ]
+
+  it('should equal 0', () => {
+    const percent = getProgressPercentage()
+    expect(percent).toBe(0)
+  })
+
   it('should equal 50', () => {
     const percent = getProgressPercentage(todo50)
     expect(percent).toBe(50)
   })
-  it('should equal 0', () => {
-    const percent = getProgressPercentage()
-    expect(percent).toBe(0)
+  it('should qual 75', () => {
+    const percent = getProgressPercentage(todo75)
+    expect(percent).toBe(75)
   })
 })
