@@ -21,4 +21,14 @@ describe('todo app', () => {
       .click()
     cy.get('[data-testid=todo-item]').should('have.length', 0)
   })
+
+  it('As a user i can change todo status', () => {
+    cy.get('[data-testid=todo-input]').type('Have a lunch{enter}')
+    cy.get('[data-testid=checked-btn]')
+      .check()
+      .should('be.checked')
+    cy.get('[data-testid=todo-item').contains('Done')
+    cy.get('[data-testid=checked-btn]').uncheck()
+    cy.get('[data-testid=todo-item').contains('In Progress')
+  })
 })
