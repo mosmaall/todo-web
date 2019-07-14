@@ -20,7 +20,7 @@ const Container = styled.div`
 `
 
 const TodoList = props => {
-  const { todos, handleRemoveTodo } = props
+  const { todos, handleRemoveTodo, handleToggleTodo } = props
 
   const itemList = todos.map(todo => (
     <TodoItem
@@ -28,6 +28,8 @@ const TodoList = props => {
       title={todo.title}
       id={todo.id}
       handleRemoveTodo={handleRemoveTodo}
+      handleToggleTodo={handleToggleTodo}
+      isFinished={todo.isFinished}
     />
   ))
 
@@ -45,6 +47,7 @@ TodoList.propTypes = {
 TodoList.defaultProps = {
   todos: [],
   handleRemoveTodo: PropTypes.func,
+  handleToggleTodo: PropTypes.func,
 }
 
 export default TodoList

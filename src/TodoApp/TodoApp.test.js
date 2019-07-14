@@ -37,4 +37,17 @@ describe('TodoApp', () => {
 
     expect(queryByText('TODO-1')).toBeNull()
   })
+  it('can change todo status', () => {
+    const { getByTestId, getByText } = render(
+      <TodoApp
+        defaultTodos={[{ id: 'todo-1', title: 'TODO-1', isFinished: false }]}
+      />
+    )
+
+    const checkedButton = getByTestId('checked-btn')
+    fireEvent.click(checkedButton)
+    expect(getByText('Done')).toBeInTheDocument()
+    fireEvent.click(checkedButton)
+    expect(getByText('In Progress')).toBeInTheDocument()
+  })
 })

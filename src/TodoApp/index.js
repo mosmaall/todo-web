@@ -11,7 +11,7 @@ function TodoApp(props) {
     setTodos(prevTodos =>
       setTodos([
         ...prevTodos,
-        { id: `${Math.random(1)}-${value}`, title: value },
+        { id: `${Math.random(1)}-${value}`, title: value, isFinished: false },
       ])
     )
   }
@@ -20,10 +20,22 @@ function TodoApp(props) {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
+  const handleToggleTodo = (id, checked) => {
+    setTodos(prevTodos =>
+      prevTodos.map(todo =>
+        todo.id === id ? { ...todo, isFinished: checked } : todo
+      )
+    )
+  }
+
   return (
     <div>
       <TodoForm handleAddTask={handleAddTask} />
-      <TodoList todos={todos} handleRemoveTodo={handleRemoveTodo} />
+      <TodoList
+        todos={todos}
+        handleRemoveTodo={handleRemoveTodo}
+        handleToggleTodo={handleToggleTodo}
+      />
     </div>
   )
 }

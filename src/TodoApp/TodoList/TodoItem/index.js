@@ -25,6 +25,7 @@ const TodoItem = props => {
 TodoItem.propTypes = {
   title: PropTypes.string,
   id: PropTypes.string,
+  isFinished: PropTypes.bool,
   handleRemoveTodo: PropTypes.func,
   handleToggleTodo: PropTypes.func,
 }
