@@ -78,7 +78,7 @@ describe('TodoItem', () => {
     expect(getByTestId('edit-input')).toBeInTheDocument()
   })
 
-  it('Change back to text when click outside input', () => {
+  it('change back to text when click outside input', () => {
     const { getByText, getByTestId, queryByTestId } = render(
       <TodoItem title={todo.title} id={todo.id} />
     )
@@ -87,5 +87,14 @@ describe('TodoItem', () => {
     fireEvent.blur(getByTestId('edit-input'))
 
     expect(queryByTestId('edit-input')).not.toBeInTheDocument()
+  })
+
+  it('has default value as title on edit input', () => {
+    const { getByText, getByTestId, queryByTestId } = render(
+      <TodoItem title={todo.title} id={todo.id} />
+    )
+
+    fireEvent.click(getByText(todo.title))
+    expect(getByTestId('edit-input')).toHaveValue(todo.title)
   })
 })

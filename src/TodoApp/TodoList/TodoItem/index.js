@@ -11,6 +11,7 @@ const TodoItem = props => {
     <li data-testid="todo-item">
       {showInput ? (
         <input
+          value={title}
           data-testid="edit-input"
           onBlur={() => setShowInput(false)}
           autoFocus
