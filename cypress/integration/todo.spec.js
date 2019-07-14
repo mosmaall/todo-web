@@ -43,4 +43,14 @@ describe('todo app', () => {
       .should('have.length', 1)
       .contains('Have a lunch')
   })
+
+  it('As a user i can see todo progress', () => {
+    cy.get('[data-testid=progress-bar]').should('have.attr', 'width', '0%')
+    cy.get('[data-testid=todo-input]').type('Have a lunch{enter}')
+    cy.get('[data-testid=todo-input]').type('Have a dinner{enter}')
+    cy.get('[data-testid=checked-btn]')
+      .first()
+      .check()
+    cy.get('[data-testid=progress-bar]').should('have.attr', 'width', '50%')
+  })
 })
