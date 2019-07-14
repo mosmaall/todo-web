@@ -2,11 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TodoItem = props => {
-  const { title, id, handleRemoveTodo } = props
+  const { title, id, handleRemoveTodo, handleToggleTodo } = props
+
   return (
     <li data-testid="todo-item">
       <span>{title}</span>
-      <input type="checkbox" data-testid="checked-btn" />
+      <input
+        type="checkbox"
+        data-testid="checked-btn"
+        onChange={e => handleToggleTodo(id, e.target.checked)}
+      />
       <button data-testid="remove-btn" onClick={() => handleRemoveTodo(id)}>
         Remove
       </button>
@@ -17,6 +22,8 @@ const TodoItem = props => {
 TodoItem.propTypes = {
   title: PropTypes.string,
   id: PropTypes.string,
+  handleRemoveTodo: PropTypes.func,
+  handleToggleTodo: PropTypes.func,
 }
 
 export default TodoItem

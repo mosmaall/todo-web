@@ -37,4 +37,20 @@ describe('TodoItem', () => {
 
     expect(handleRemoveTodo).toHaveBeenCalledWith(todo.id)
   })
+
+  it('call "handleToggleTodo" with id and value when click checkbox', () => {
+    const handleToggleTodo = jest.fn()
+    const { getByTestId } = render(
+      <TodoItem
+        title={todo.title}
+        id={todo.id}
+        handleToggleTodo={handleToggleTodo}
+      />
+    )
+
+    const checkButton = getByTestId('checked-btn')
+    fireEvent.click(checkButton)
+
+    expect(handleToggleTodo).toHaveBeenCalledWith(todo.id, true || false)
+  })
 })
