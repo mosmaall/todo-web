@@ -21,6 +21,7 @@ const TodoItem = props => {
           value={title}
           data-testid="edit-input"
           onBlur={() => setShowInput(false)}
+          onKeyDown={e => (e.key === 'Enter' ? setShowInput(false) : null)}
           onChange={e => handleChangeTitle(e.target.value, id)}
           autoFocus
         />
