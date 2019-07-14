@@ -7,19 +7,28 @@ const StyledButton = styled.button`
 `
 
 const StatusTabs = props => {
-  const { active } = props
+  const { active, handleClickMenu } = props
   return (
     <div>
-      <StyledButton data-testid="all-menu" active={active === 'all'}>
+      <StyledButton
+        data-testid="all-menu"
+        active={active === 'all'}
+        onClick={() => handleClickMenu('all')}
+      >
         All
       </StyledButton>
       <StyledButton
         data-testid="inProgress-menu"
         active={active === 'inProgress'}
+        onClick={() => handleClickMenu('inProgress')}
       >
         In Progress
       </StyledButton>
-      <StyledButton data-testid="done-menu" active={active === 'done'}>
+      <StyledButton
+        data-testid="done-menu"
+        active={active === 'done'}
+        onClick={() => handleClickMenu('done')}
+      >
         Done
       </StyledButton>
     </div>
@@ -28,6 +37,7 @@ const StatusTabs = props => {
 
 StatusTabs.propTypes = {
   active: PropTypes.string,
+  handleClickMenu: PropTypes.func,
 }
 
 StatusTabs.defaultProps = {

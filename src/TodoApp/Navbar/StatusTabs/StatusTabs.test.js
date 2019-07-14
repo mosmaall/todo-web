@@ -26,4 +26,13 @@ describe('StatusTabs', () => {
     const { getByTestId } = render(<StatusTabs active="done" />)
     expect(getByTestId('done-menu')).toHaveStyle('text-decoration: underline')
   })
+  it('calls "handleClickMenu" with value when clicked menu', () => {
+    const handleClickMenu = jest.fn()
+    const { getByTestId } = render(
+      <StatusTabs handleClickMenu={handleClickMenu} />
+    )
+    const menu = getByTestId('done-menu')
+    fireEvent.click(menu)
+    expect(handleClickMenu).toHaveBeenCalledWith('done')
+  })
 })
