@@ -13,4 +13,12 @@ describe('todo app', () => {
       .type('Have a dinner{enter}')
     cy.get('[data-testid=todo-item]').should('have.length', 2)
   })
+
+  it('As a user i can remove todo', () => {
+    cy.get('[data-testid=todo-input]').type('Have a lunch{enter}')
+    cy.get('[data-testid=remove-btn]')
+      .first()
+      .click()
+    cy.get('[data-testid=todo-item]').should('have.length', 0)
+  })
 })
