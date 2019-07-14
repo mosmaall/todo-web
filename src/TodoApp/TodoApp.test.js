@@ -64,6 +64,11 @@ describe('TodoApp', () => {
     fireEvent.click(inProgressMenu)
     expect(getByTestId('todo-item')).toHaveTextContent('TODO-1')
   })
+  it('render progress bar with 50% width', () => {
+    const { getByTestId } = render(<TodoApp defaultTodos={todos} />)
+
+    expect(getByTestId('progress-bar')).toHaveStyle('width: 50%')
+  })
 })
 
 describe('getProgressPercentage', () => {

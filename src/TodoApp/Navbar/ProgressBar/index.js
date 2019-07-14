@@ -9,7 +9,7 @@ const Container = styled.div`
 `
 
 const Progress = styled.div`
-  height: inherint;
+  height: inherit;
   width: ${props => props.width || 0};
   background: white;
 `

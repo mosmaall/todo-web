@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import StatusTabs from './Navbar/StatusTabs'
+import ProgressBar from './Navbar/ProgressBar'
 
 function getFilteredTodo(todos, currentMenu) {
   if (currentMenu === 'done') {
@@ -58,6 +59,7 @@ function TodoApp(props) {
 
   return (
     <div>
+      <ProgressBar percent={percent} />
       <StatusTabs active={currentMenu} handleClickMenu={handleClickMenu} />
       <TodoForm handleAddTask={handleAddTask} />
       <TodoList
