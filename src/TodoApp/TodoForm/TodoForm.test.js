@@ -37,4 +37,13 @@ describe('TodoForm', () => {
     expect(handleAddTask).toHaveBeenCalledWith('NEW TASK')
     expect(input).toHaveAttribute('value', '')
   })
+  it('not call "handleAddTask" if value is empty', () => {
+    const handleAddTask = jest.fn()
+    const { getByTestId } = render(<TodoForm handleAddTask={handleAddTask} />)
+
+    const input = getByTestId('todo-input')
+    const form = getByTestId('todo-form')
+    fireEvent.submit(form)
+    expect(handleAddTask).toHaveBeenCalledTimes(0)
+  })
 })
