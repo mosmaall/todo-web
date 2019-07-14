@@ -12,4 +12,14 @@ describe('StatusTabs', () => {
     expect(getByTestId('inProgress-menu')).toBeInTheDocument()
     expect(getByTestId('done-menu')).toBeInTheDocument()
   })
+  it('show active on All menu by default', () => {
+    const { getByTestId } = render(<StatusTabs />)
+    expect(getByTestId('all-menu')).toHaveStyle('text-decoration: underline')
+  })
+  it('show active on InProgress menu', () => {
+    const { getByTestId } = render(<StatusTabs active="inProgress" />)
+    expect(getByTestId('inProgress-menu')).toHaveStyle(
+      'text-decoration: underline'
+    )
+  })
 })
