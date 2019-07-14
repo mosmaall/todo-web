@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 const TodoItem = props => {
   const { title, id, handleRemoveTodo } = props
   return (
-    <div data-testid="todo-item">
-      {title}
+    <li data-testid="todo-item">
+      <span>{title}</span>
       <button data-testid="remove-btn" onClick={() => handleRemoveTodo(id)}>
         Remove
       </button>
-    </div>
+    </li>
   )
 }
 

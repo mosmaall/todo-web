@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { space } from '../../theme'
+import TodoItem from './TodoItem'
 
 const Container = styled.div`
   margin-top: ${space.md};
@@ -19,12 +20,15 @@ const Container = styled.div`
 `
 
 const TodoList = props => {
-  const { todos } = props
+  const { todos, handleRemoveTodo } = props
 
   const itemList = todos.map(todo => (
-    <li key={todo.id} data-testid="todo-item">
-      {todo.title}
-    </li>
+    <TodoItem
+      key={todo.id}
+      title={todo.title}
+      id={todo.id}
+      handleRemoveTodo={handleRemoveTodo}
+    />
   ))
 
   return (
@@ -40,6 +44,7 @@ TodoList.propTypes = {
 
 TodoList.defaultProps = {
   todos: [],
+  handleRemoveTodo: PropTypes.func,
 }
 
 export default TodoList

@@ -27,4 +27,14 @@ describe('TodoApp', () => {
 
     getByText('NEW TASK')
   })
+  it('remove todo when click remove button', () => {
+    const { getByTestId, queryByText } = render(
+      <TodoApp defaultTodos={[{ id: 'todo-1', title: 'TODO-1' }]} />
+    )
+
+    const delButton = getByTestId('remove-btn')
+    fireEvent.click(delButton)
+
+    expect(queryByText('TODO-1')).toBeNull()
+  })
 })
