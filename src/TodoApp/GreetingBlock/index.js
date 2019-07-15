@@ -2,17 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const GreetingBlock = props => {
-  const { remainTodo } = props
+  const { remainingTodos } = props
 
-  return <div>{remainTodo} tasks to complete.</div>
+  return <div>{remainingTodos} tasks to complete.</div>
 }
 
 GreetingBlock.propTypes = {
-  remainTodo: PropTypes.number,
+  remainingTodos: PropTypes.number,
 }
 
 GreetingBlock.defaultProps = {
-  remainTodo: 0,
+  remainingTodos: 0,
 }
 
 export default GreetingBlock

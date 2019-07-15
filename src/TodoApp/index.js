@@ -4,6 +4,7 @@ import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import StatusTabs from './Navbar/StatusTabs'
 import ProgressBar from './Navbar/ProgressBar'
+import GreetingBlock from './GreetingBlock'
 
 function getFilteredTodo(todos, currentMenu) {
   if (currentMenu === 'done') {
@@ -62,9 +63,11 @@ function TodoApp(props) {
 
   const filterTodos = getFilteredTodo(todos, currentMenu)
   const percent = getProgressPercentage(todos)
+  const remainingTodos = todos.reduce((sum, todo) => !todo.isFinished ? (sum = sum += 1) : sum, 0) // prettier-ignore
 
   return (
     <div>
+      <GreetingBlock remainingTodos={remainingTodos} />
       <ProgressBar percent={percent} />
       <StatusTabs active={currentMenu} handleClickMenu={handleClickMenu} />
       <TodoForm handleAddTask={handleAddTask} />
