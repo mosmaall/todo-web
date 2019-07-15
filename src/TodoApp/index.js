@@ -5,6 +5,7 @@ import TodoList from './TodoList'
 import StatusTabs from './Navbar/StatusTabs'
 import ProgressBar from './Navbar/ProgressBar'
 import GreetingBlock from './GreetingBlock'
+import Navbar from './Navbar'
 
 function getFilteredTodo(todos, currentMenu) {
   if (currentMenu === 'done') {
@@ -67,9 +68,12 @@ function TodoApp(props) {
 
   return (
     <div>
+      <Navbar
+        active={currentMenu}
+        handleClickMenu={handleClickMenu}
+        percent={percent}
+      />
       <GreetingBlock remainingTodos={remainingTodos} />
-      <ProgressBar percent={percent} />
-      <StatusTabs active={currentMenu} handleClickMenu={handleClickMenu} />
       <TodoForm handleAddTask={handleAddTask} />
       <TodoList
         todos={filterTodos}

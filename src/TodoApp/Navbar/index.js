@@ -4,18 +4,21 @@ import ProgressBar from './ProgressBar'
 import StatusTabs from './StatusTabs'
 
 const Navbar = props => {
-  const { title } = props
+  const { title, currentMenu, handleClickMenu, percent } = props
   return (
     <div>
       <h1>{title}</h1>
-      <ProgressBar />
-      <StatusTabs />
+      <ProgressBar percent={percent} />
+      <StatusTabs active={currentMenu} handleClickMenu={handleClickMenu} />
     </div>
   )
 }
 
 Navbar.propTypes = {
   title: PropTypes.string,
+  percent: PropTypes.number,
+  currentMenu: PropTypes.string,
+  handleClickMenu: PropTypes.func,
 }
 
 Navbar.defaultProps = {
