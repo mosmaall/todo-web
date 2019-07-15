@@ -87,10 +87,6 @@ describe('TodoApp', () => {
 
     expect(getByTestId('todo-item')).toHaveTextContent('CHANGE-TITLE')
   })
-  it('show remaining todo equal 1', () => {
-    const { getByText } = render(<TodoApp defaultTodos={todos} />)
-    expect(getByText(/1 tasks/i)).toBeInTheDocument()
-  })
 })
 
 describe('getProgressPercentage', () => {

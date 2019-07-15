@@ -6,23 +6,18 @@ import StatusTabs from './StatusTabs'
 import { elemSize, device, fontSizes, palette, space } from '../../theme'
 
 const Header = styled.header`
-  z-index: 999;
-  width: 100%;
-  height: ${elemSize.navbarHeight};
-`
-
-const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
-  height: inherit;
+  z-index: 999;
+  width: 100%;
   background: white;
 
   @media ${device.tablet} {
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 0;
+    padding-bottom: ${space.lg};
+    border-bottom: 1px solid ${palette.grey1};
   }
 `
 
@@ -30,11 +25,12 @@ const LeftWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  box-sizing: border-box;
   height: 100%;
   justify-content: space-between;
   width: ${elemSize.navbarLeftWidth};
-  border-right: 2px solid #f8f8f8;
-  padding: 0 ${space.xxl};
+  border-right: 2px solid ${palette.grey1};
+  padding: ${space.xxl} ${space.xxxl};
 
   a {
     font-size: ${fontSizes.xl};
@@ -49,6 +45,7 @@ const LeftWrapper = styled.div`
 
   @media ${device.tablet} {
     border-right: none;
+    width: 100%;
   }
 `
 
@@ -56,13 +53,11 @@ const Navbar = props => {
   const { title, active, handleClickMenu, percent } = props
   return (
     <Header>
-      <Wrapper>
-        <LeftWrapper>
-          <a href=".">{title}</a>
-          <ProgressBar percent={percent} />
-        </LeftWrapper>
-        <StatusTabs active={active} handleClickMenu={handleClickMenu} />
-      </Wrapper>
+      <LeftWrapper>
+        <a href=".">{title}</a>
+        <ProgressBar percent={percent} />
+      </LeftWrapper>
+      <StatusTabs active={active} handleClickMenu={handleClickMenu} />
     </Header>
   )
 }

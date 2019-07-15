@@ -6,11 +6,25 @@ import Navbar from './Navbar'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 import GreetingBlock from './GreetingBlock'
-import { space, elemSize } from '../theme'
+import { space, device } from '../theme'
 
 const BodyWrapper = styled.div`
-  padding: ${space.xxl};
-  height: calc(100% - ${elemSize.navbarHeight});
+  display: flex;
+  padding: 0 ${space.xxxl};
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
+`
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+
+  @media ${device.tablet} {
+    flex: 1;
+  }
 `
 
 function getFilteredTodo(todos, currentMenu) {
@@ -73,7 +87,7 @@ function TodoApp(props) {
   const remainingTodos = todos.reduce((sum, todo) => !todo.isFinished ? (sum = sum += 1) : sum, 0) // prettier-ignore
 
   return (
-    <div>
+    <>
       <Navbar
         active={currentMenu}
         handleClickMenu={handleClickMenu}
@@ -81,15 +95,17 @@ function TodoApp(props) {
       />
       <BodyWrapper>
         <GreetingBlock remainingTodos={remainingTodos} />
-        <TodoForm handleAddTask={handleAddTask} />
-        <TodoList
-          todos={filterTodos}
-          handleRemoveTodo={handleRemoveTodo}
-          handleToggleTodo={handleToggleTodo}
-          handleChangeTitle={handleChangeTitle}
-        />
+        <Box>
+          <TodoForm handleAddTask={handleAddTask} />
+          <TodoList
+            todos={filterTodos}
+            handleRemoveTodo={handleRemoveTodo}
+            handleToggleTodo={handleToggleTodo}
+            handleChangeTitle={handleChangeTitle}
+          />
+        </Box>
       </BodyWrapper>
-    </div>
+    </>
   )
 }
 
