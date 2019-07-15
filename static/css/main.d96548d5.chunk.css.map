@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACE,2BAA+B,CAC/B,QAAS,CACT,SAAU,CACV,eACF,CAEA,MACE,qBACF","file":"main.d96548d5.chunk.css","sourcesContent":["body {\n  font-family: 'Lato', sans-serif;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n}\n\ninput {\n  box-sizing: border-box;\n}"]}
