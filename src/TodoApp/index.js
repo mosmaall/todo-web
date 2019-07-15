@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import Navbar from './Navbar'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
-import StatusTabs from './Navbar/StatusTabs'
-import ProgressBar from './Navbar/ProgressBar'
 import GreetingBlock from './GreetingBlock'
-import Navbar from './Navbar'
+import { space, elemSize } from '../theme'
+
+const BodyWrapper = styled.div`
+  padding: ${space.xxl};
+  height: calc(100% - ${elemSize.navbarHeight});
+`
 
 function getFilteredTodo(todos, currentMenu) {
   if (currentMenu === 'done') {
@@ -73,14 +79,16 @@ function TodoApp(props) {
         handleClickMenu={handleClickMenu}
         percent={percent}
       />
-      <GreetingBlock remainingTodos={remainingTodos} />
-      <TodoForm handleAddTask={handleAddTask} />
-      <TodoList
-        todos={filterTodos}
-        handleRemoveTodo={handleRemoveTodo}
-        handleToggleTodo={handleToggleTodo}
-        handleChangeTitle={handleChangeTitle}
-      />
+      <BodyWrapper>
+        <GreetingBlock remainingTodos={remainingTodos} />
+        <TodoForm handleAddTask={handleAddTask} />
+        <TodoList
+          todos={filterTodos}
+          handleRemoveTodo={handleRemoveTodo}
+          handleToggleTodo={handleToggleTodo}
+          handleChangeTitle={handleChangeTitle}
+        />
+      </BodyWrapper>
     </div>
   )
 }
