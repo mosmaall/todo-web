@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -53,7 +53,7 @@ function TodoApp(props) {
   const [todos, setTodos] = useState(defaultTodos)
   const [currentMenu, setCurrentMenu] = useState('all')
 
-  const handleAddTask = value => {
+  const handleAddTask = useCallback(value => {
     const imageNum = Math.floor(Math.random() * 4)
     setTodos(prevTodos =>
       setTodos([
@@ -66,33 +66,39 @@ function TodoApp(props) {
         },
       ])
     )
-  }
+  }, [])
 
-  const handleRemoveTodo = id => {
-    setTodos(todos.filter(todo => todo.id !== id))
-  }
+  const handleRemoveTodo = useCallback(
+    id => {
+      setTodos(todos.filter(todo => todo.id !== id))
+    },
+    [todos]
+  )
 
-  const handleToggleTodo = (id, checked) => {
+  const handleToggleTodo = useCallback((id, checked) => {
     setTodos(prevTodos =>
       prevTodos.map(todo =>
         todo.id === id ? { ...todo, isFinished: checked } : todo
       )
     )
-  }
+  }, [])
 
-  const handleClickMenu = value => {
+  const handleClickMenu = useCallback(value => {
     setCurrentMenu(value)
-  }
+  }, [])
 
-  const handleChangeTitle = (value, id) => {
+  const handleChangeTitle = useCallback((value, id) => {
     setTodos(prevTodos =>
       prevTodos.map(todo => (todo.id === id ? { ...todo, title: value } : todo))
     )
-  }
+  }, [])
 
-  const filterTodos = getFilteredTodo(todos, currentMenu)
-  const percent = getProgressPercentage(todos)
-  const remainingTodos = todos.reduce((sum, todo) => !todo.isFinished ? (sum = sum += 1) : sum, 0) // prettier-ignore
+  const filterTodos = useMemo(() => getFilteredTodo(todos, currentMenu), [
+    todos,
+    currentMenu,
+  ])
+  const percent = useMemo(() => getProgressPercentage(todos), [todos])
+  const remainingTodos = useMemo(() => todos.reduce((sum, todo) => !todo.isFinished ? (sum = sum += 1) : sum, 0), [todos]) // prettier-ignore
 
   return (
     <>
