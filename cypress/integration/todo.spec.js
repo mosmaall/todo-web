@@ -56,9 +56,13 @@ describe('todo app', () => {
 
   it('As a user i can edit todo title', () => {
     cy.get('[data-testid=todo-input]').type('Have a lunch{enter}')
-    cy.get('[data-testid=todo-item] p').click()
+    cy.get('[data-testid=todo-item] p')
+      .first()
+      .click()
     cy.get('[data-testid=edit-input]').clear()
     cy.get('[data-testid=edit-input]').type('Have a wife{enter}')
-    cy.get('[data-testid=todo-item] p').contains('Have a wife')
+    cy.get('[data-testid=todo-item] p')
+      .first()
+      .contains('Have a wife')
   })
 })
