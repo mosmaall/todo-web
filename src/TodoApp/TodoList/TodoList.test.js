@@ -21,9 +21,7 @@ describe('TodoList', () => {
   it('should render list of todo', () => {
     const { getAllByTestId } = render(<TodoList todos={todos} />)
 
-    const todoTitles = getAllByTestId('todo-item').map(
-      li => li.childNodes[0].textContent
-    )
+    const todoTitles = getAllByTestId('todo-title').map(li => li.textContent)
     const fakeTodoTitles = todos.map(t => t.title)
 
     expect(todoTitles).toEqual(fakeTodoTitles)

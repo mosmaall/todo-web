@@ -41,6 +41,7 @@ const TodoForm = props => {
         placeholder="Add task"
         value={value}
         onChange={onChange}
+        autoFocus
       />
     </form>
   )

@@ -8,6 +8,8 @@ import TodoList from './TodoList'
 import GreetingBlock from './GreetingBlock'
 import { space, device } from '../theme'
 
+import { images } from '../constants'
+
 const BodyWrapper = styled.div`
   display: flex;
   padding: 0 ${space.xxxl};
@@ -52,10 +54,16 @@ function TodoApp(props) {
   const [currentMenu, setCurrentMenu] = useState('all')
 
   const handleAddTask = value => {
+    const imageNum = Math.floor(Math.random() * 4)
     setTodos(prevTodos =>
       setTodos([
         ...prevTodos,
-        { id: `${Math.random(1)}-${value}`, title: value, isFinished: false },
+        {
+          id: `${Math.random(1)}-${value}`,
+          title: value,
+          isFinished: false,
+          imgURL: images[imageNum],
+        },
       ])
     )
   }

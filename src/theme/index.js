@@ -45,6 +45,7 @@ export const palette = {
   grey1: '#f8f8f8',
   primary: '#F3AC67',
   primaryLighten: '#fceee0',
+  success: '#32CD32',
 }
 
 export const elemSize = {
@@ -53,6 +54,7 @@ export const elemSize = {
   navbarRightWidth: '35%',
   progreesWidth: '150px',
   progressHeight: '5px',
+  todoHeight: '130px',
 }
 
 export const device = {

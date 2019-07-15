@@ -5,17 +5,14 @@ import { space } from '../../theme'
 import TodoItem from './TodoItem'
 
 const Container = styled.div`
+  height: calc(100vh - 200px);
   margin-top: ${space.md};
+  overflow-y: auto;
+  padding: 0 ${space.xs};
 
   ul {
     list-style-type: none;
     padding-inline-start: 0;
-
-    li {
-      margin-bottom: ${space.md};
-      padding: ${space.md};
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    }
   }
 `
 
@@ -27,6 +24,7 @@ const TodoList = props => {
       key={todo.id}
       title={todo.title}
       id={todo.id}
+      imgURL={todo.imgURL}
       handleRemoveTodo={handleRemoveTodo}
       handleToggleTodo={handleToggleTodo}
       handleChangeTitle={handleChangeTitle}
