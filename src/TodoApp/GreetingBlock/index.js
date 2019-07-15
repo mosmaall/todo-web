@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const GreetingBlock = props => {
   const { remainTodo } = props
 
-  return <div>{remainTodo}</div>
+  return <div>{remainTodo} tasks to complete.</div>
 }
 
 GreetingBlock.propTypes = {

@@ -7,12 +7,12 @@ import GreetingBlock from '.'
 afterEach(cleanup)
 
 describe('GreetingBlock', () => {
-  it('show remain todo equal 0', () => {
+  it('show remaining todo equal 0', () => {
     const { getByText } = render(<GreetingBlock remainTodo={0} />)
-    expect(getByText('0')).toBeInTheDocument()
+    expect(getByText(/0/i)).toBeInTheDocument()
   })
-  it('show remain todo equal 5', () => {
+  it('show remaining todo equal 5', () => {
     const { getByText } = render(<GreetingBlock remainTodo={5} />)
-    expect(getByText('5')).toBeInTheDocument()
+    expect(getByText(/5/i)).toBeInTheDocument()
   })
 })
