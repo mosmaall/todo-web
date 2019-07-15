@@ -11,4 +11,9 @@ describe('Navbar', () => {
     const { getByText } = render(<Navbar title="to-do list" />)
     expect(getByText(/to-do list/i)).toBeInTheDocument()
   })
+  it('should render ProgressBar and StatusTabs', () => {
+    const { getByTestId } = render(<Navbar title="to-do list" />)
+    expect(getByTestId('all-menu')).toBeInTheDocument()
+    expect(getByTestId('progress-bar')).toBeInTheDocument()
+  })
 })
